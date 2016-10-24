@@ -1,0 +1,30 @@
+{
+  "name": "modular_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server",
+    "yolo": "git add --all && git commit -am \"$(date)\" && git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madkraft/modular_js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madkraft/modular_js/issues"
+  },
+  "homepage": "https://github.com/madkraft/modular_js#readme",
+  "dependencies": {
+    "es6-module-loader": "^0.17.11",
+    "systemjs": "^0.19.27",
+    "traceur": "0.0.108"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.0",
+    "standard": "^8.0.0-beta.5"
+  }
+}

@@ -1,4 +1,4 @@
-var Sandbox = {
+const Sandbox = {
     create : function (core, module_selector) {
             var CONTAINER = core.dom.query('#' + module_selector);
             return {
@@ -50,3 +50,4 @@ var Sandbox = {
         }
 };
 
+export default Sandbox
