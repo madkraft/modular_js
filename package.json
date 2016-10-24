@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
-    "yolo": "git add --all && git commit -am \"$(date)\" && git push origin master"
+    "yolo": "git add --all && git commit -am \"$(date)\" && git push"
   },
   "repository": {
     "type": "git",
