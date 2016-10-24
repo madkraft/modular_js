@@ -1,3 +1,3 @@
-import Modules from './modules.js'
+import Modules from './modules/modules.js'
 
 Modules()

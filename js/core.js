@@ -9,20 +9,20 @@ export default function CORE () {
   }
 
   function create_module (moduleID, creator) {
-    var temp;
+    var temp
     if (typeof moduleID === 'string' && typeof creator === 'function') {
-      temp = creator(Sandbox.create(this, moduleID));
+      temp = creator(Sandbox.create(this, moduleID))
       if (temp.init && temp.destroy && typeof temp.init === 'function' && typeof temp.destroy === 'function') {
         moduleData[moduleID] = {
-          create : creator,
-          instance : null
-        };
-        temp = null;
+          create: creator,
+          instance: null
+        }
+        temp = null
       } else {
-        this.log(1, "Module \"" + moduleId + "\" Registration: FAILED: instance has no init or destroy functions");
+        this.log(1, "Module \"" + moduleId + "\" Registration: FAILED: instance has no init or destroy functions")
       }
     } else {
-      this.log(1, "Module \"" + moduleId +  "\" Registration: FAILED: one or more arguments are of incorrect type" );
+      this.log(1, "Module \"" + moduleId +  "\" Registration: FAILED: one or more arguments are of incorrect type" )
 
     }
   }
@@ -36,10 +36,10 @@ export default function CORE () {
   }
 
   function start_all () {
-    var moduleID;
+    var moduleID
     for (moduleID in moduleData) {
       if (moduleData.hasOwnProperty(moduleID)) {
-        this.start(moduleID);
+        this.start(moduleID)
       }
     }
   }
@@ -58,7 +58,7 @@ export default function CORE () {
     var moduleID;
     for (moduleID in moduleData) {
       if (moduleData.hasOwnProperty(moduleID)) {
-        this.stop(moduleID);
+        this.stop(moduleID)
       }
     }
   }
@@ -66,12 +66,12 @@ export default function CORE () {
   function registerEvents (evts, mod) {
     if (this.is_obj(evts) && mod) {
       if (moduleData[mod]) {
-        moduleData[mod].events = evts;
+        moduleData[mod].events = evts
       } else {
-        this.log(1, "");
+        this.log(1, '')
       }
     } else {
-      this.log(1, "");
+      this.log(1, '')
     }
   }
 
