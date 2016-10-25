@@ -1,9 +1,12 @@
-import Sandbox from './sandbox.js'
+import sandbox from '../sandbox.js'
 
 export default function CORE () {
-  var moduleData = {}
-  var debug = true
+  var moduleData = {} // move to app object
+  var debug = true // move to app object
 
+  const Sandbox = sandbox()
+
+  // REMOVE DEBUG AND LOGGING
   function debug (on) {
     debug = on ? true : false
   }
@@ -104,55 +107,6 @@ export default function CORE () {
     }
   }
 
-  function query (selector, context) {
-    var ret = {}, that = this, jqEls, i = 0;
-
-    if (context && context.find) {
-      jqEls = context.find(selector);
-    } else {
-      jqEls = jQuery(selector);
-    }
-
-    ret = jqEls.get();
-    ret.length = jqEls.length;
-    ret.query = function (sel) {
-      return that.query(sel, jqEls);
-    }
-    return ret;
-  }
-
-  function bind (element, evt, fn) {
-    if (element && evt) {
-      if (typeof evt === 'function') {
-        fn = evt;
-        evt = 'click';
-      }
-      jQuery(element).bind(evt, fn);
-    } else {
-      // log wrong arguments
-    }
-  }
-
-  function unbind (element, evt, fn) {
-    if (element && evt) {
-      if (typeof evt === 'function') {
-        fn = evt;
-        evt = 'click';
-      }
-      jQuery(element).unbind(evt, fn);
-    } else {
-      // log wrong arguments
-    }
-  }
-
-  function create (el) {
-    return document.createElement(el);
-  }
-
-  function apply_attrs (el, attrs) {
-    jQuery(el).attr(attrs);
-  }
-
   function is_arr (arr) {
     return jQuery.isArray(arr);
   }
@@ -172,13 +126,6 @@ export default function CORE () {
     triggerEvent,
     removeEvents,
     log,
-    dom: {
-      query,
-      bind,
-      unbind,
-      create,
-      apply_attrs
-    },
     is_arr,
     is_obj
   }

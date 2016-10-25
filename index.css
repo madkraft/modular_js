@@ -7,10 +7,16 @@ body {
     margin:auto;
     overflow:hidden;
 }
+
+#search-box {
+    background-color: red;
+}
+
 #search-box, #filters-bar {
     margin-left:10px;
 }
 #filters-bar ul {
+    background-color: pink;
     list-style-type:none;
     margin:10px 0;
     padding:0;
@@ -27,6 +33,7 @@ body {
     color:#474747;
 }
 #product-panel {
+    background-color: yellow;
     float:left;
     width: 588px;
     color: white;
