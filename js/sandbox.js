@@ -5,7 +5,6 @@ export default function Sandbox () {
   const DOM = dom()
 
   function create (core, module_selector) {
-
     var CONTAINER = DOM.query('#' + module_selector);
 
     function find (selector) {
@@ -39,26 +38,7 @@ export default function Sandbox () {
       }
     }
 
-    function create_element (el, config) {
-      var i, text;
-      el = DOM.create(el);
-      if (config) {
-        if (config.children && core.is_arr(config.children)) {
-          i = 0;
-          while (config.children[i]) {
-            el.appendChild(config.children[i]);
-            i++;
-          }
-          delete config.children;
-        } else if (config.text) {
-          text = document.createTextNode(config.text);
-          delete config.text;
-          el.appendChild(text);
-        }
-        DOM.apply_attrs(el, config);
-      }
-      return el;
-    }
+
 
     return {
       find,
@@ -67,7 +47,6 @@ export default function Sandbox () {
       notify,
       listen,
       ignore,
-      create_element
     }
 
   }

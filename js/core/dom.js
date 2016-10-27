@@ -48,13 +48,35 @@ export default function DOM () {
     jQuery(el).attr(attrs);
   }
 
+  function create_element (el, config) {
+    var i, text;
+    el = create(el);
+    if (config) {
+      if (config.children) {
+        i = 0;
+        while (config.children[i]) {
+          el.appendChild(config.children[i]);
+          i++;
+        }
+        delete config.children;
+      } else if (config.text) {
+        text = document.createTextNode(config.text);
+        delete config.text;
+        el.appendChild(text);
+      }
+      apply_attrs(el, config);
+    }
+    return el;
+  }
+
 
   return {
     query,
     bind,
     unbind,
     create,
-    apply_attrs
+    apply_attrs,
+    create_element
   }
 
 }

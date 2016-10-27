@@ -1,26 +1,25 @@
-export default function searchBox (sb) {
-  let input = sb.find('#search_input')[0]
-  let button = sb.find('#search_button')[0]
-  let reset = sb.find('#quit_search')[0]
+import dom from '../core/dom.js'
+import pubsub from '../core/pubsub.js'
 
-  // let input = document.querySelector('#search_input')
-  // let button = document.querySelector('#search_button')
-  // let reset = document.querySelector('#quit_search')
+
+export default function searchBox (sb) {
+  const DOM = dom();
+  const PUBSUB = pubsub();
+
+  let input = DOM.query('#search_input')[0]
+  let button = DOM.query('#search_button')[0]
+  let reset = DOM.query('#quit_search')[0]
 
   // this code runs two times
 
   function init () {
-    sb.addEvent(button, 'click', handleSearch)
-    sb.addEvent(reset, 'click', quitSearch)
-    // button.addEventListener('click', handleSearch)
-    // reset.addEventListener('click', quitSearch)
+    DOM.bind(button, 'click', handleSearch)
+    DOM.bind(reset, 'click', quitSearch)
   }
 
   function destroy () {
-    sb.removeEvent(button, 'click', handleSearch)
-    sb.removeEvent(reset, 'click', quitSearch)
-    // button.removeEventListener('click', handleSearch)
-    // reset.removeEventListener('click', quitSearch)
+    DOM.unbind(button, 'click', handleSearch)
+    DOM.unbind(reset, 'click', quitSearch)
     input = null
     button = null
     reset = null
@@ -29,7 +28,7 @@ export default function searchBox (sb) {
   function handleSearch () {
     let query = input.value
     if (query) {
-      sb.notify({
+      PUBSUB.triggerEvent({
         type: 'perform-search',
         data: query
       })
@@ -38,7 +37,7 @@ export default function searchBox (sb) {
 
   function quitSearch () {
     input.value = ''
-    sb.notify({
+    PUBSUB.triggerEvent({
       type: 'quit-search',
       data: null
     })

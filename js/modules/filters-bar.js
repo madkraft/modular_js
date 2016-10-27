@@ -1,17 +1,23 @@
+import dom from '../core/dom.js'
+import pubsub from '../core/pubsub.js'
+
 export default function filtersBar (sb) {
-  let filters = sb.find('a')
+  const DOM = dom();
+  const PUBSUB = pubsub();
+
+  let filters = DOM.query('a')
 
   function init () {
-    sb.addEvent(filters, 'click', filterProducts)
+    DOM.bind(filters, 'click', filterProducts)
   }
 
   function destroy () {
-    sb.removeEvent(filters, 'click', filterProducts)
+    DOM.unbind(filters, 'click', filterProducts)
     filters = null
   }
 
   function filterProducts (e) {
-    sb.notify({
+    PUBSUB.triggerEvent({
       type: 'change-filter',
       data: e.currentTarget.innerHTML
     })

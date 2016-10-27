@@ -1,38 +1,46 @@
+import dom from '../core/dom.js'
+import pubsub from '../core/pubsub.js'
+
+
 export default function shoppingCart (sb) {
-  let cart = sb.find('ul')[0]
+  const DOM = dom();
+  const PUBSUB = pubsub();
+  var name = 'shopping-cart'
+
+  let cart = DOM.query('ul')[0]
   let cartItems = {}
 
   function init () {
     cartItems = {}
-    sb.listen({
+    PUBSUB.registerEvents({
       'add-item': addItem
-    })
+    }, name)
   }
 
   function destroy () {
     cart = null
     cartItems = null
-    sb.ignore(['add-item'])
+    PUBSUB.removeEvents(['add-item'], name)
   }
 
   function addItem (product) {
-    var entry = sb.find('#cart-' + product.id + ' .quantity')[0]
+    var entry = DOM.query('#cart-' + product.id + ' .quantity')[0]
     if (entry) {
       entry.innerHTML = (parseInt(entry.innerHTML, 10) + 1)
       cartItems[product.id]++;
     } else {
-      entry = sb.create_element('li', {
+      entry = DOM.create_element('li', {
         id: 'cart-' + product.id,
         children: [
-          sb.create_element('span', {
+          DOM.create_element('span', {
             'class': 'product_name',
             text: product.name
           }),
-          sb.create_element('span', {
+          DOM.create_element('span', {
             'class': 'quantity',
             text: '1'
           }),
-          sb.create_element('span', {
+          DOM.create_element('span', {
             'class': 'price',
             text: '$' + product.price.toFixed(2)
           })

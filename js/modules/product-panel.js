@@ -1,5 +1,13 @@
+import dom from '../core/dom.js'
+import pubsub from '../core/pubsub.js'
+
+
 export default function productPanel (sb) {
+  const DOM = dom();
+  const PUBSUB = pubsub();
+
   var products
+  var name = 'product-panel'
 
   function eachProduct (fn) {
     var i = 0
@@ -17,24 +25,24 @@ export default function productPanel (sb) {
   }
 
   function init () {
-    products = sb.find('li')
-    sb.listen({
+    products = DOM.query('li')
+    PUBSUB.registerEvents({
       'change-filter': change_filter,
       'reset-fitlers': reset,
       'perform-search': search,
       'quit-search': reset
-    })
+    }, name)
 
     eachProduct(function (product) {
-      sb.addEvent(product, 'click', addToCart)
+      DOM.bind(product, 'click', addToCart)
     })
   }
 
   function destroy () {
     eachProduct(function (product) {
-      sb.removeEvent(product, 'click', addToCart)
+      DOM.unbind(product, 'click', addToCart)
     })
-    sb.ignore(['change-filter', 'reset-filters', 'perform-search', 'quit-search'])
+    PUBSUB.removeEvents(['change-filter', 'reset-filters', 'perform-search', 'quit-search'], name)
   }
 
   function search (query) {
@@ -58,7 +66,7 @@ export default function productPanel (sb) {
 
   function addToCart (e) {
     var li = e.currentTarget
-    sb.notify({
+    PUBSUB.triggerEvent({
       type: 'add-item',
       data: {
         id: li.id,
