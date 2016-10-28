@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server",
+    "build": "webpack",
+    "dev": "webpack-dev-server",
     "yolo": "git add --all && git commit -am \"$(date)\" && git push"
   },
   "repository": {
@@ -19,12 +20,14 @@
   },
   "homepage": "https://github.com/madkraft/modular_js#readme",
   "dependencies": {
-    "es6-module-loader": "^0.17.11",
-    "systemjs": "^0.19.27",
-    "traceur": "0.0.108"
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
-    "lite-server": "^2.2.0",
-    "standard": "^8.0.0-beta.5"
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "standard": "^8.0.0-beta.5",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   }
 }

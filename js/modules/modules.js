@@ -4,6 +4,7 @@ import filtersBar from './filters-bar.js'
 import productPanel from './product-panel.js'
 import shoppingCart from './shopping-cart.js'
 
+
 export default function Modules () {
   CORE.registerModule('search-box', searchBox)
   CORE.registerModule('filters-bar', filtersBar)

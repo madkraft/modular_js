@@ -1,9 +1,8 @@
 import CORE from './core.js'
 
 export default function pubsub () {
-
   function registerEvents (evts, mod) {
-    debugger // 3
+    // debugger // 3
     var moduleData = CORE.getModuleData()
     if (CORE.is_obj(evts) && mod) {
       if (moduleData[mod]) {

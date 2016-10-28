@@ -1,20 +1,18 @@
-// import sandbox from '../sandbox.js'
-  // const Sandbox = sandbox()
+import jQuery from "jquery";
 
 
-
-const lol = {
+const CORE = {
   moduleData: {},
   registerModule: function registerModule (moduleID, creator) {
-    debugger // 1
+    // debugger // 1
     this.moduleData[moduleID] = {
       create: creator,
       instance: null
     }
   },
   start: function start (moduleID) {
-    debugger // 2
-    var module = moduleData[moduleID];
+    // debugger // 2
+    var module = this.moduleData[moduleID];
     // module.instance = module.create(Sandbox.create(this, moduleID));
     module.instance = module.create();
     module.instance.init();
@@ -51,4 +49,5 @@ const lol = {
   }
 }
 
-export default lol
+
+export default CORE

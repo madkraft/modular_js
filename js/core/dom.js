@@ -1,3 +1,5 @@
+import jQuery from "jquery";
+
 export default function DOM () {
   function query (selector, context) {
     var ret = {}, that = this, jqEls, i = 0;
