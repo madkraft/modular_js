@@ -7,7 +7,7 @@ export default function shoppingCart (sb) {
   const PUBSUB = pubsub();
   var name = 'shopping-cart'
 
-  let cart = DOM.query('ul')[0]
+  let cart = DOM.query('#' + name).query('ul')[0]
   let cartItems = {}
 
   function init () {

@@ -1,10 +1,9 @@
 import dom from '../core/dom.js'
 import pubsub from '../core/pubsub.js'
 
-
 export default function productPanel (sb) {
-  const DOM = dom();
-  const PUBSUB = pubsub();
+  const DOM = dom()
+  const PUBSUB = pubsub()
 
   var products
   var name = 'product-panel'
@@ -12,7 +11,6 @@ export default function productPanel (sb) {
   function eachProduct (fn) {
     var i = 0
     var product
-
     for ( ; product = products[i++]; ) {
       fn(product)
     }
@@ -25,7 +23,7 @@ export default function productPanel (sb) {
   }
 
   function init () {
-    products = DOM.query('li')
+    products = DOM.query('#product-panel').query('li')
     PUBSUB.registerEvents({
       'change-filter': change_filter,
       'reset-fitlers': reset,

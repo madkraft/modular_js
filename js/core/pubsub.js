@@ -1,9 +1,10 @@
 import CORE from './core.js'
 
 export default function pubsub () {
+  var moduleData = CORE.getModuleData()
+
   function registerEvents (evts, mod) {
     // debugger // 3
-    var moduleData = CORE.getModuleData()
     if (CORE.is_obj(evts) && mod) {
       if (moduleData[mod]) {
         moduleData[mod].events = evts
@@ -16,12 +17,12 @@ export default function pubsub () {
   }
 
   function triggerEvent (evt) {
-    var mod;
+    var mod
     for (mod in moduleData) {
       if (moduleData.hasOwnProperty(mod)){
-        mod = moduleData[mod];
+        mod = moduleData[mod]
         if (mod.events && mod.events[evt.type]) {
-          mod.events[evt.type](evt.data);
+          mod.events[evt.type](evt.data)
         }
       }
     }
@@ -31,7 +32,7 @@ export default function pubsub () {
     var i = 0, evt;
     if (CORE.is_arr(evts) && mod && (mod = moduleData[mod]) && mod.events) {
       for ( ; evt = evts[i++] ; ) {
-        delete mod.events[evt];
+        delete mod.events[evt]
       }
     }
   }
