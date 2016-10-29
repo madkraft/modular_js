@@ -1,11 +1,10 @@
 import CORE from './core.js'
 
 export default function pubsub () {
-  var moduleData = CORE.getModuleData()
+  const moduleData = CORE.getModuleData()
 
   function registerEvents (evts, mod) {
-    // debugger // 3
-    if (CORE.is_obj(evts) && mod) {
+    if (mod) {
       if (moduleData[mod]) {
         moduleData[mod].events = evts
       } else {
@@ -19,7 +18,7 @@ export default function pubsub () {
   function triggerEvent (evt) {
     var mod
     for (mod in moduleData) {
-      if (moduleData.hasOwnProperty(mod)){
+      if (moduleData.hasOwnProperty(mod)) {
         mod = moduleData[mod]
         if (mod.events && mod.events[evt.type]) {
           mod.events[evt.type](evt.data)
@@ -28,20 +27,15 @@ export default function pubsub () {
     }
   }
 
-  function removeEvents (evts, mod) {
-    var i = 0, evt;
-    if (CORE.is_arr(evts) && mod && (mod = moduleData[mod]) && mod.events) {
-      for ( ; evt = evts[i++] ; ) {
-        delete mod.events[evt]
-      }
+  function removeEvents (events, mod) {
+    if (mod && (mod = moduleData[mod]) && mod.events) {
+      events.map(event => delete mod.events[event])
     }
   }
-
 
   return {
     registerEvents,
     triggerEvent,
     removeEvents
   }
-
 }

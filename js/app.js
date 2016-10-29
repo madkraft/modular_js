@@ -9,10 +9,4 @@ CORE.registerModule('filters-bar', filtersBar)
 CORE.registerModule('product-panel', productPanel)
 CORE.registerModule('shopping-cart', shoppingCart)
 
-CORE.start_all()
-
-// console.log('', Core);
-
-// import Modules from './modules/modules.js'
-
-// Modules()
+CORE.startAll()

@@ -2,8 +2,8 @@ import dom from '../core/dom.js'
 import pubsub from '../core/pubsub.js'
 
 export default function filtersBar (sb) {
-  const DOM = dom();
-  const PUBSUB = pubsub();
+  const DOM = dom()
+  const PUBSUB = pubsub()
 
   let filters = DOM.query('a')
 

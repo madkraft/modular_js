@@ -1,10 +1,9 @@
 import dom from '../core/dom.js'
 import pubsub from '../core/pubsub.js'
 
-
 export default function shoppingCart (sb) {
-  const DOM = dom();
-  const PUBSUB = pubsub();
+  const DOM = dom()
+  const PUBSUB = pubsub()
   var name = 'shopping-cart'
 
   let cart = DOM.query('#' + name).query('ul')[0]
@@ -27,20 +26,20 @@ export default function shoppingCart (sb) {
     var entry = DOM.query('#cart-' + product.id + ' .quantity')[0]
     if (entry) {
       entry.innerHTML = (parseInt(entry.innerHTML, 10) + 1)
-      cartItems[product.id]++;
+      cartItems[product.id]++
     } else {
-      entry = DOM.create_element('li', {
+      entry = DOM.createElement('li', {
         id: 'cart-' + product.id,
         children: [
-          DOM.create_element('span', {
+          DOM.createElement('span', {
             'class': 'product_name',
             text: product.name
           }),
-          DOM.create_element('span', {
+          DOM.createElement('span', {
             'class': 'quantity',
             text: '1'
           }),
-          DOM.create_element('span', {
+          DOM.createElement('span', {
             'class': 'price',
             text: '$' + product.price.toFixed(2)
           })

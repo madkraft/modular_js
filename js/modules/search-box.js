@@ -1,16 +1,13 @@
 import dom from '../core/dom.js'
 import pubsub from '../core/pubsub.js'
 
-
 export default function searchBox (sb) {
-  const DOM = dom();
-  const PUBSUB = pubsub();
+  const DOM = dom()
+  const PUBSUB = pubsub()
 
   let input = DOM.query('#search_input')[0]
   let button = DOM.query('#search_button')[0]
   let reset = DOM.query('#quit_search')[0]
-
-  // this code runs two times
 
   function init () {
     DOM.bind(button, 'click', handleSearch)

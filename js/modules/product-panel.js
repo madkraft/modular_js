@@ -8,16 +8,8 @@ export default function productPanel (sb) {
   var products
   var name = 'product-panel'
 
-  function eachProduct (fn) {
-    var i = 0
-    var product
-    for ( ; product = products[i++]; ) {
-      fn(product)
-    }
-  }
-
-  function reset () {
-    eachProduct(function (product) {
+  function reset (products) {
+    products.map(product => {
       product.style.opacity = '1'
     })
   }
@@ -25,37 +17,33 @@ export default function productPanel (sb) {
   function init () {
     products = DOM.query('#product-panel').query('li')
     PUBSUB.registerEvents({
-      'change-filter': change_filter,
+      'change-filter': changeFilter,
       'reset-fitlers': reset,
       'perform-search': search,
       'quit-search': reset
     }, name)
 
-    eachProduct(function (product) {
-      DOM.bind(product, 'click', addToCart)
-    })
+    products.map(product => DOM.bind(product, 'click', addToCart))
   }
 
   function destroy () {
-    eachProduct(function (product) {
-      DOM.unbind(product, 'click', addToCart)
-    })
+    products.map(product => DOM.unbind(product, 'click', addToCart))
     PUBSUB.removeEvents(['change-filter', 'reset-filters', 'perform-search', 'quit-search'], name)
   }
 
-  function search (query) {
-    reset()
+  function search (query, products) {
+    reset(products)
     query = query.toLowerCase()
-    eachProduct(function (product) {
+    products.map(product => {
       if (product.getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(query) < 0) {
         product.style.opacity = '0.2'
       }
     })
   }
 
-  function change_filter (filter) {
-    reset()
-    eachProduct(function (product) {
+  function changeFilter (filter) {
+    reset(products)
+    products.map(product => {
       if (product.getAttribute('data-8088-keyword').toLowerCase().indexOf(filter.toLowerCase()) < 0) {
         product.style.opacity = '0.2'
       }
@@ -79,7 +67,7 @@ export default function productPanel (sb) {
     init,
     destroy,
     search,
-    change_filter,
+    changeFilter,
     addToCart
   }
 }
