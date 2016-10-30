@@ -8,14 +8,14 @@ export default function productPanel (sb) {
   var products
   var name = 'product-panel'
 
-  function reset (products) {
+  function reset () {
     products.map(product => {
       product.style.opacity = '1'
     })
   }
 
   function init () {
-    products = DOM.query('#product-panel').query('li')
+    products = DOM.query('#product-panel').query('a')
     PUBSUB.registerEvents({
       'change-filter': changeFilter,
       'reset-fitlers': reset,
@@ -31,11 +31,11 @@ export default function productPanel (sb) {
     PUBSUB.removeEvents(['change-filter', 'reset-filters', 'perform-search', 'quit-search'], name)
   }
 
-  function search (query, products) {
+  function search (query) {
     reset(products)
     query = query.toLowerCase()
     products.map(product => {
-      if (product.getElementsByTagName('p')[0].innerHTML.toLowerCase().indexOf(query) < 0) {
+      if (product.innerHTML.toLowerCase().indexOf(query) < 0) {
         product.style.opacity = '0.2'
       }
     })
@@ -51,13 +51,13 @@ export default function productPanel (sb) {
   }
 
   function addToCart (e) {
-    var li = e.currentTarget
+    var target = e.currentTarget
     PUBSUB.triggerEvent({
       type: 'add-item',
       data: {
-        id: li.id,
-        name: li.getElementsByTagName('p')[0].innerHTML,
-        price: parseInt(li.id, 10)
+        id: target.id,
+        name: target.innerHTML,
+        price: parseInt(target.id, 10)
       }
     })
   }

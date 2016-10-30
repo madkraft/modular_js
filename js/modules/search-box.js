@@ -22,7 +22,8 @@ export default function searchBox (sb) {
     reset = null
   }
 
-  function handleSearch () {
+  function handleSearch (event) {
+    event.preventDefault()
     let query = input.value
     if (query) {
       PUBSUB.triggerEvent({
@@ -32,7 +33,8 @@ export default function searchBox (sb) {
     }
   }
 
-  function quitSearch () {
+  function quitSearch (event) {
+    event.preventDefault()
     input.value = ''
     PUBSUB.triggerEvent({
       type: 'quit-search',

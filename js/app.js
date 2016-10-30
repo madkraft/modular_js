@@ -1,3 +1,4 @@
+import '../styles/index.styl'
 import CORE from './core/core.js'
 import searchBox from './modules/search-box.js'
 import filtersBar from './modules/filters-bar.js'

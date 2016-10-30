@@ -5,7 +5,7 @@ export default function filtersBar (sb) {
   const DOM = dom()
   const PUBSUB = pubsub()
 
-  let filters = DOM.query('a')
+  let filters = DOM.query('.filter')
 
   function init () {
     DOM.bind(filters, 'click', filterProducts)

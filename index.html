@@ -3,45 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Online Store</title>
-    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
     <div id="main">
-        <div id="search-box">
-            <input id="search_input" type="text" name='q' />
-            <button id="search_button">Search</button>
-            <button id="quit_search">Reset</button>
+        <div class="container">
+            <div class="grid-flex-container">
+                <div class="grid-flex-cell">
+                    <div id="filters-bar">
+                        <ul>
+                            <li><a class="filter" href="#red">Red</a></li>
+                            <li><a class="filter" href="#blue">Blue</a></li>
+                            <li><a class="filter" href="#mobile">Mobile</a></li>
+                            <li><a class="filter" href="#accessory">Accessory</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid-flex-cell">
+                    <div id="search-box">
+                        <form class='form-inline form-no-labels'>
+                            <div class='form-element'>
+                                <input id="search_input" class='form-input' type="text" placeholder='Find product' name='q' />
+                            </div>
+
+                            <button id="search_button" type='submit' class='button button-primary'>Search</button>
+                            <button id="quit_search" class='button button-primary'>Reset</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="filters-bar">
-            <ul>
-                <li><a href="#red">Red</a></li>
-                <li><a href="#blue">Blue</a></li>
-                <li><a href="#mobile">Mobile</a></li>
-                <li><a href="#accessory">Accessory</a></li>
-            </ul>
+
+        <div class="container">
+            <div class="grid-flex-container">
+                <div class="grid-flex-cell-1of2">
+                    <div id="product-panel">
+                        <ul class="grid-flex-container">
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="1" data-8088-keyword="red">First Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="2" data-8088-keyword="blue">Second Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="3" data-8088-keyword="mobile">Third Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="4" data-8088-keyword="accessory">Fourth Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="5" data-8088-keyword="red mobile">Fifth Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="6" data-8088-keyword="blue mobile">Sixth Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="7" data-8088-keyword="red accessory">Seventh Item</a>
+                             </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="8" data-8088-keyword="blue accessory">Eighth Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3">
+                                <a class='button button-outlined' id="9" data-8088-keyword="red blue">Ninth Item</a>
+                            </li>
+                            <li class="grid-flex-cell-1of3" >
+                                <a class='button button-outlined' id="10" data-8088-keyword="mobile accessory">Tenth Item</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid-flex-cell-1of2">
+                    <div id="shopping-cart">
+                        <ul class="list-unstyled">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-       <div id="product-panel">
-            <ul>
-                <li id="1" data-8088-keyword="red"><p>First Item</p></li>
-                <li id="2" data-8088-keyword="blue"><p>Second Item</p></li>
-                <li id="3" data-8088-keyword="mobile"><p>Third Item</p></li>
-                <li id="4" data-8088-keyword="accessory"><p>Fourth Item</p></li>
-                <li id="5" data-8088-keyword="red mobile"><p>Fifth Item</p></li>
-                <li id="6" data-8088-keyword="blue mobile"><p>Sixth Item</p></li>
-                <li id="7" data-8088-keyword="red accessory"><p>Seventh Item </p></li>
-                <li id="8" data-8088-keyword="blue accessory"><p>Eighth Item</p></li>
-                <li id="9" data-8088-keyword="red blue"><p>Ninth Item</p></li>
-                <li id="10" data-8088-keyword="mobile accessory"><p>Tenth Item</p></li>
-            </ul>
-
-        </div>
-
-        <div id="shopping-cart">
-            <ul>
-            </ul>
-        </div>
     </div>
 
     <script src="bundle.js"></script>

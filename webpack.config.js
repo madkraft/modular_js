@@ -1,4 +1,5 @@
 var path = require('path')
+var yeticss = require('yeticss')
 
 module.exports = {
   context: path.resolve(__dirname, 'js'),
@@ -15,7 +16,14 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /\.styl$/,
+        loaders: ['style', 'css', 'stylus']
       }
     ]
+  },
+  stylus: {
+    use: [yeticss()]
   }
 }
