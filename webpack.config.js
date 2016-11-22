@@ -2,6 +2,7 @@ var path = require('path')
 var yeticss = require('yeticss')
 
 module.exports = {
+  devtool: 'source-map',
   context: path.resolve(__dirname, 'js'),
   entry: './app',
   output: {

@@ -1,9 +1,8 @@
-import dom from '../core/dom.js'
-import pubsub from '../core/pubsub.js'
+import dom from '../core/dom'
+import events from '../core/pubsub2'
 
 export default function shoppingCart (sb) {
   const DOM = dom()
-  const PUBSUB = pubsub()
   var name = 'shopping-cart'
 
   let cart = DOM.query('#' + name).query('ul')[0]
@@ -11,29 +10,27 @@ export default function shoppingCart (sb) {
 
   function init () {
     cartItems = {}
-    PUBSUB.registerEvents({
-      'add-item': addItem
-    }, name)
+    events.on('add-item', addItem)
   }
 
   function destroy () {
     cart = null
     cartItems = null
-    PUBSUB.removeEvents(['add-item'], name)
+    events.off('add-item', addItem)
   }
 
-  function addItem (product) {
-    var entry = DOM.query('#cart-' + product.id + ' .quantity')[0]
+  function addItem (payload) {
+    var entry = DOM.query('#cart-' + payload.id + ' .quantity')[0]
     if (entry) {
       entry.innerHTML = (parseInt(entry.innerHTML, 10) + 1)
-      cartItems[product.id]++
+      cartItems[payload.id]++
     } else {
       entry = DOM.createElement('li', {
-        id: 'cart-' + product.id,
+        id: 'cart-' + payload.id,
         children: [
           DOM.createElement('span', {
             'class': 'product_name',
-            text: product.name
+            text: payload.name
           }),
           DOM.createElement('span', {
             'class': 'quantity',
@@ -41,14 +38,14 @@ export default function shoppingCart (sb) {
           }),
           DOM.createElement('span', {
             'class': 'price',
-            text: '$' + product.price.toFixed(2)
+            text: '$' + payload.price.toFixed(2)
           })
         ],
         'class': 'cart_entry'
       })
 
       cart.appendChild(entry)
-      cartItems[product.id] = 1
+      cartItems[payload.id] = 1
     }
   }
 

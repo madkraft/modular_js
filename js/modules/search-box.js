@@ -1,9 +1,8 @@
-import dom from '../core/dom.js'
-import pubsub from '../core/pubsub.js'
+import dom from '../core/dom'
+import events from '../core/pubsub2'
 
 export default function searchBox (sb) {
   const DOM = dom()
-  const PUBSUB = pubsub()
 
   let input = DOM.query('#search_input')[0]
   let button = DOM.query('#search_button')[0]
@@ -26,7 +25,7 @@ export default function searchBox (sb) {
     event.preventDefault()
     let query = input.value
     if (query) {
-      PUBSUB.triggerEvent({
+      events.emit('perform-search', {
         type: 'perform-search',
         data: query
       })
@@ -36,8 +35,7 @@ export default function searchBox (sb) {
   function quitSearch (event) {
     event.preventDefault()
     input.value = ''
-    PUBSUB.triggerEvent({
-      type: 'quit-search',
+    events.emit('quit-search', {
       data: null
     })
   }

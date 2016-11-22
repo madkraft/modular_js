@@ -1,9 +1,8 @@
 import dom from '../core/dom.js'
-import pubsub from '../core/pubsub.js'
+import events from '../core/pubsub2.js'
 
-export default function filtersBar (sb) {
+export default function filtersBar () {
   const DOM = dom()
-  const PUBSUB = pubsub()
 
   let filters = DOM.query('.filter')
 
@@ -17,8 +16,7 @@ export default function filtersBar (sb) {
   }
 
   function filterProducts (e) {
-    PUBSUB.triggerEvent({
-      type: 'change-filter',
+    events.emit('change-filter', {
       data: e.currentTarget.innerHTML
     })
   }
