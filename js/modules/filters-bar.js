@@ -1,5 +1,5 @@
-import dom from '../core/dom.js'
-import events from '../core/pubsub2.js'
+import dom from '../core/dom'
+import events from '../core/pubsub'
 
 export default function filtersBar () {
   const DOM = dom()

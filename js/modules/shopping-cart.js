@@ -1,5 +1,5 @@
 import dom from '../core/dom'
-import events from '../core/pubsub2'
+import events from '../core/pubsub'
 
 export default function shoppingCart (sb) {
   const DOM = dom()
