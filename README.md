@@ -1,8 +1,8 @@
 # modular_js
 
 + [ ] remove item from the cart
-+ [ ] reset filtering
-+ [ ] disable adding items that are greyed out
++ [x] reset filtering
++ [x] disable adding items that are greyed out
 + [ ] refactor core.js
 + [ ] use classes to define modules
 + [ ] establish routes

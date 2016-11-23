@@ -10,6 +10,7 @@ export default function productPanel (sb) {
   function reset () {
     products.map(product => {
       product.style.opacity = '1'
+      product.style.pointerEvents = 'auto'
     })
   }
 
@@ -36,6 +37,7 @@ export default function productPanel (sb) {
     products.map(product => {
       if (product.innerHTML.toLowerCase().indexOf(query) < 0) {
         product.style.opacity = '0.2'
+        product.style.pointerEvents = 'none'
       }
     })
   }
@@ -46,6 +48,7 @@ export default function productPanel (sb) {
     products.map(product => {
       if (product.getAttribute('data-8088-keyword').toLowerCase().indexOf(payload.data.toLowerCase()) < 0) {
         product.style.opacity = '0.2'
+        product.style.pointerEvents = 'none'
       }
     })
     
