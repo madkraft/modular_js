@@ -1,6 +1,7 @@
 # modular_js
 
 + [ ] remove item from the cart
++ [ ] btn to clear cart
 + [x] reset filtering
 + [x] disable adding items that are greyed out
 + [ ] refactor core.js

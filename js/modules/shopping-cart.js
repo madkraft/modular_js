@@ -7,16 +7,21 @@ export default function shoppingCart (sb) {
 
   let cart = DOM.query('#' + name).query('ul')[0]
   let cartItems = {}
+  let clearButton = DOM.query('#' + name).query('#clearCart')[0]
+  let cartList = DOM.query('#' + name).query('#cartList')[0]
 
   function init () {
     cartItems = {}
     events.on('add-item', addItem)
+    DOM.bind(clearButton, 'click', clearItems)
   }
 
   function destroy () {
     cart = null
     cartItems = null
+    clearButton = null
     events.off('add-item', addItem)
+    DOM.unbind(clearButton, 'click', clearItems)
   }
 
   function addItem (payload) {
@@ -46,6 +51,13 @@ export default function shoppingCart (sb) {
 
       cart.appendChild(entry)
       cartItems[payload.id] = 1
+    }
+  }
+
+  function clearItems () {
+    // temporary solution | search for another with changing state of a component
+    while (cartList.firstChild) {
+      cartList.removeChild(cartList.firstChild);
     }
   }
 
