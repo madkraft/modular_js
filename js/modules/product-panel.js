@@ -42,11 +42,16 @@ export default function productPanel (sb) {
 
   function changeFilter (payload) {
     reset(products)
+
     products.map(product => {
       if (product.getAttribute('data-8088-keyword').toLowerCase().indexOf(payload.data.toLowerCase()) < 0) {
         product.style.opacity = '0.2'
       }
     })
+    
+    if (payload.data === 'all') {
+      reset(products)
+    }
   }
 
   function addToCart (e) {

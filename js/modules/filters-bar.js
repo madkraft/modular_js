@@ -17,7 +17,7 @@ export default function filtersBar () {
 
   function filterProducts (e) {
     events.emit('change-filter', {
-      data: e.currentTarget.innerHTML
+      data: e.currentTarget.getAttribute('data-filter')
     })
   }
 
