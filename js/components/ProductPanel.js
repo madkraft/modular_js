@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react'
 
 export default class ProductPanel extends React.Component {

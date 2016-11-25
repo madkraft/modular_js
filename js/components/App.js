@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import Nav from './Navigation'
 import Auth from './Auth'
@@ -10,13 +8,15 @@ import ShoppingCart from './ShoppingCart'
 
 export default class App extends React.Component {
   render () {
+    const {store} = this.props
+
     return (
       <div>
-        <Nav />
+        <Nav store={store} />
         <div className='container'>
           <Auth />
           <SearchBox />
-          <FiltersBar />
+          <FiltersBar store={store} />
           <ProductPanel />
           <ShoppingCart />
         </div>
