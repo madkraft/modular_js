@@ -1,5 +1,6 @@
 # modular_js
 
+TODO:
 + ~~setup React~~
 + restore basic functionality
 + react with firebase for authentication
@@ -20,3 +21,6 @@
 + change event system
 + make user authentication
 + add source maps to log errors
+
+Problems:
++ 
