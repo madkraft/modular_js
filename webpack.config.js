@@ -4,7 +4,7 @@ var yeticss = require('yeticss')
 module.exports = {
   devtool: 'source-map',
   context: path.resolve(__dirname, 'js'),
-  entry: './app',
+  entry: './index',
   output: {
     filename: 'bundle.js'
   },
@@ -26,5 +26,6 @@ module.exports = {
   },
   stylus: {
     use: [yeticss()]
-  }
+  },
+  devServer: { inline: true }
 }
