@@ -3,7 +3,7 @@
 + ~~setup React~~
 + restore basic functionality
 + react with firebase for authentication
-+ integrate mini redux
++ ~~integrate mini redux~~
 + try mobx
 + grab a list of products via ajax
 
