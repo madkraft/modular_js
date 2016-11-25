@@ -1,6 +1,6 @@
 # With choo
 
-
+TODO:
 + remove item from the cart
 + btn to clear cart
 + reset filtering
@@ -14,3 +14,6 @@
 + change event system
 + make user authentication
 + add source maps to log errors
+
+Problems:
++ router
