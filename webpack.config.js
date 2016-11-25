@@ -26,5 +26,6 @@ module.exports = {
   },
   stylus: {
     use: [yeticss()]
-  }
+  },
+  devServer: { inline: true }
 }
