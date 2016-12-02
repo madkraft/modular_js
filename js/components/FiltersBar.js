@@ -1,5 +1,4 @@
 import React from 'react'
-import appActions from '../app.actions'
 
 export default class FiltersBar extends React.Component {
   constructor () {
@@ -12,12 +11,8 @@ export default class FiltersBar extends React.Component {
       {value: 'mobile', label: 'Mobile'},
       {value: 'accessory', label: 'Accessory'}
     ]
-    this.actions = appActions()
   }
 
-  // componentWillMount () {
-  //   this.setState()
-  // }
 
   onClick (filter) {
     const {store} = this.props

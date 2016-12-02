@@ -1,14 +1,23 @@
 import '../styles/index.styl'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import App from './components/App'
-import AppStore from './app.store'
-import { categoriesReducer, initialCategories } from './app.state'
+import Main from './components/Main'
+import CartPage from './pages/CartPage'
+import ProductsPage from './pages/ProductsPage'
+import LoginPage from './pages/LoginPage'
+import SingleProductPage from './pages/SingleProductPage'
 
-const store = new AppStore(categoriesReducer, initialCategories)
-
-ReactDOM.render(
-  <App store={store} />,
-  document.getElementById('root')
+const router = (
+  <Router history={browserHistory}>
+    <Route path='/' component={Main}>
+      <IndexRoute component={ProductsPage} />
+      <Route path='/cart' component={CartPage} />
+      <Route path='/product/:prodId' component={SingleProductPage} />
+      <Route path='/login' component={LoginPage} />
+    </Route>
+  </Router>
 )
+
+render(router, document.getElementById('root'))

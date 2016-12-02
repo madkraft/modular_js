@@ -2,11 +2,13 @@
 
 TODO:
 + ~~setup React~~
-+ restore basic functionality
-+ react with firebase for authentication
 + ~~integrate mini redux~~
-+ try mobx
++ react router
++ redux
++ restore basic functionality
++ prepare data with products
 + grab a list of products via ajax
++ react with firebase for authentication
 
 + remove item from the cart
 + btn to clear cart
@@ -21,6 +23,7 @@ TODO:
 + change event system
 + make user authentication
 + add source maps to log errors
++ try mobx
 
 Problems:
 + 

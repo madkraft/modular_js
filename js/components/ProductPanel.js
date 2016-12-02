@@ -1,5 +1,5 @@
-
 import React from 'react'
+import { Link } from 'react-router'
 
 export default class ProductPanel extends React.Component {
   render () {
@@ -7,7 +7,7 @@ export default class ProductPanel extends React.Component {
       <div id='product-panel'>
         <ul className='grid-flex-container'>
           <li className='grid-flex-cell-1of3'>
-            <a className='button button-outlined' id='1' data-8088-keyword='red'>First Item</a>
+            <Link to='/product/1' className='button button-outlined' id='1' data-8088-keyword='red'>First Item</Link>
           </li>
           <li className='grid-flex-cell-1of3'>
             <a className='button button-outlined' id='2' data-8088-keyword='blue'>Second Item</a>
